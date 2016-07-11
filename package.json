@@ -1,0 +1,82 @@
+{
+  "name": "backend-starter",
+  "version": "1.0.0",
+  "description": "My starter for a backend-server",
+  "author": "Tanner Linsley <tannerlinsley@gmail.com>",
+  "homepage": "https://github.com/tannerlinsley/backend-starter#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tannerlinsley/backend-starter.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tannerlinsley/backend-starter/issues"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test:lint": "standard src/** test/** --verbose | snazzy",
+    "test:unit": "nyc ava test/unit -a",
+    "test:integration": "ava test/integration",
+    "pretest": "rm -rf .nyc_output coverage",
+    "test": "cross-env NODE_ENV=testing run-s test:*",
+    "posttest": "nyc report -r=lcov",
+    "coveralls": "cat coverage/lcov.info | coveralls",
+    "prebuild": "rm -rf lib",
+    "build": "babel src -d lib --no-comments",
+    "watch": "npm run build -- -w -s",
+    "startdev": "NODE_ENV=development node lib/index.js",
+    "start": "node lib/index.js",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "litespeed": "jsonmaur/litespeed"
+  },
+  "devDependencies": {
+    "ava": "^0.15.2",
+    "babel-cli": "^6.10.1",
+    "babel-eslint": "^6.1.2",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-2": "^6.11.0",
+    "babel-register": "^6.9.0",
+    "cross-env": "^1.0.8",
+    "npm-run-all": "^2.3.0",
+    "nyc": "^7.0.0",
+    "sinon": "^1.17.4",
+    "snazzy": "^4.0.0",
+    "standard": "^7.1.2"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-2",
+      "react"
+    ],
+    "plugins": [
+      [
+        "transform-runtime",
+        {
+          "polyfill": false,
+          "regenerator": true
+        }
+      ]
+    ]
+  },
+  "standard": {
+    "parser": "babel-eslint"
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ]
+  },
+  "nyc": {
+    "require": [
+      "babel-register"
+    ],
+    "include": [
+      "src"
+    ]
+  }
+}
