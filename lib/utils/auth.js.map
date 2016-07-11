@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/utils/auth.js"],"names":[],"mappings":";;;;;;kBAAe,UAAU,OAAV,EAAmB,QAAnB,EAA6B;AAC1C,UAAQ,GAAR,CAAY,OAAZ,EAAqB,QAArB;AACD,C","file":"auth.js","sourcesContent":["export default function (request, response) {\n  console.log(request, response)\n}\n"]}

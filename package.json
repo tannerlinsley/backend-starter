@@ -29,7 +29,7 @@
     "prepublish": "npm run build"
   },
   "dependencies": {
-    "litespeed": "jsonmaur/litespeed"
+    "litespeed": "^0.1.1"
   },
   "devDependencies": {
     "ava": "^0.15.2",
