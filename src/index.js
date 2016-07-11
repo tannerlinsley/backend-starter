@@ -1,15 +1,11 @@
 import Litespeed from 'litespeed'
 
-import auth from './utils/auth'
+// TODO: email/password auth - password reset
+// TODO: social auth
+// TODO: Sequelize PostGres - default tables
 
 new Litespeed()
-  .route({
-    method: 'GET',
-    url: '/',
-    preHandlers: [auth],
-    handler: (req) => {
-      return 'Server is running!'
-      // return { message: 'Welcome!' }
-    }
+  .routes({
+    dir: './routes/**'
   })
   .start()
